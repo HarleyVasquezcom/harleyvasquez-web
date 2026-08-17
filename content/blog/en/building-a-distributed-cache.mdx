@@ -1,0 +1,95 @@
+---
+title: "Building a Distributed Cache: Lessons from Production"
+description: "A deep dive into building a distributed caching system that handles millions of requests per second with sub-millisecond latency."
+date: "2024-01-15"
+tags: ["distributed systems", "cache", "go", "architecture"]
+---
+
+When I started building our distributed cache at Vercel, I had a simple goal: create a system that could handle millions of requests per second while maintaining sub-millisecond latency. What seemed straightforward at first turned into a journey filled with complex trade-offs and hard-learned lessons.
+
+## The Problem
+
+Our existing caching solution was showing signs of strain. As our traffic grew, we started seeing:
+- Increased latency during peak hours
+- Cache stampedes causing database overload
+- Inconsistent behavior across different regions
+
+We needed something better.
+
+## Architecture Decisions
+
+### Consistent Hashing
+
+One of the first decisions was to use consistent hashing for key distribution. This allowed us to:
+- Minimize data movement when adding/removing nodes
+- Distribute load evenly across the cluster
+- Handle node failures gracefully
+
+```go
+func hashKey(key string) uint32 {
+    h := crc32.NewIEEE()
+    h.Write([]byte(key))
+    return h.Sum32()
+}
+```
+
+### Replication Strategy
+
+We chose a multi-master replication strategy with eventual consistency. This meant:
+- Any node could accept writes
+- Reads could be served from any node
+- Conflicts were resolved using last-write-wins with vector clocks
+
+## Challenges Faced
+
+### Cache Stampede
+
+One of our biggest challenges was cache stampedes - when multiple requests try to populate the same cache key simultaneously. We solved this using a distributed lock mechanism:
+
+```go
+func (c *Cache) Get(key string) ([]byte, error) {
+    if val, ok := c.data[key]; ok {
+        return val, nil
+    }
+    
+    lock := c.acquireLock(key)
+    defer lock.Release()
+    
+    // Double-check after acquiring lock
+    if val, ok := c.data[key]; ok {
+        return val, nil
+    }
+    
+    // Fetch from source
+    val, err := c.fetchFromSource(key)
+    if err != nil {
+        return nil, err
+    }
+    
+    c.data[key] = val
+    return val, nil
+}
+```
+
+### Memory Management
+
+Managing memory across distributed nodes proved challenging. We implemented:
+- LRU eviction policies
+- Memory pressure monitoring
+- Automatic scaling based on memory usage
+
+## Results
+
+After implementing these changes, we saw:
+- **99.9% reduction** in cache stampedes
+- **50% improvement** in p99 latency
+- **3x increase** in throughput
+
+## Key Takeaways
+
+1. **Start simple**: Don't over-engineer from the start
+2. **Measure everything**: You can't improve what you don't measure
+3. **Plan for failure**: Assume things will break
+4. **Iterate quickly**: Small, frequent deployments beat big releases
+
+Building distributed systems is hard, but incredibly rewarding. The lessons learned from this project have influenced how I approach every system I build today.

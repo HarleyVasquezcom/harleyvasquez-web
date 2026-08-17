@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-surface:        #FAFAF8;
+    --color-surface-1:      #F3F3F0;
+    --color-surface-2:      #E8E8E4;
+    --color-surface-3:      #DDDDD8;
+    --color-surface-border: #D4D4CC;
+    --color-text:           #0A0A0A;
+    --color-text-muted:     rgba(0,0,0,0.45);
+    --color-accent:         #059669;
+    --color-accent-light:   #10B981;
+    --color-accent-glow:    #05966920;
+  }
+  .dark {
+    --color-surface:        #0A0A0A;
+    --color-surface-1:      #111111;
+    --color-surface-2:      #1A1A1A;
+    --color-surface-3:      #242424;
+    --color-surface-border: #2A2A2A;
+    --color-text:           #FFFFFF;
+    --color-text-muted:     rgba(255,255,255,0.5);
+    --color-accent:         #10B981;
+    --color-accent-light:   #34D399;
+    --color-accent-glow:    #10B98133;
+  }
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #10B981 #111111;
+  }
+  ::selection {
+    background: #10B98130;
+    color: #34D399;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent-light;
+  }
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08];
+  }
+  .section-padding {
+    @apply px-6 md:px-12 lg:px-24 py-24 md:py-32;
+  }
+  .container-max {
+    @apply max-w-6xl mx-auto;
+  }
+}

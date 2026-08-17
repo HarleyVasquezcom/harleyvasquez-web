@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "about": "Acerca de",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "blog": "Blog",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "available": "Disponible para trabajar"
+  },
+  "about": {
+    "title": "Acerca de",
+    "techStack": "Stack Tecnológico"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "featured": "Destacado",
+    "code": "Código",
+    "live": "En vivo"
+  },
+  "experience": {
+    "title": "Experiencia"
+  },
+  "blog": {
+    "title": "Blog",
+    "readMore": "Leer más",
+    "noPosts": "No hay publicaciones aún."
+  },
+  "contact": {
+    "title": "Contacto",
+    "description": "¿Interesado en trabajar juntos? Envíame un mensaje y te responderé lo antes posible.",
+    "name": "Nombre",
+    "email": "Correo",
+    "message": "Mensaje",
+    "send": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "success": "¡Mensaje enviado!",
+    "successMessage": "Gracias por contactarme. Te responderé pronto."
+  },
+  "footer": {
+    "connect": "Conectar"
+  }
+}

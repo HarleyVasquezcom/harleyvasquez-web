@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "about": "Über",
+    "projects": "Projekte",
+    "experience": "Erfahrung",
+    "blog": "Blog",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "available": "Verfügbar für Arbeit"
+  },
+  "about": {
+    "title": "Über",
+    "techStack": "Tech Stack"
+  },
+  "projects": {
+    "title": "Projekte",
+    "featured": "Hervorgehoben",
+    "code": "Code",
+    "live": "Live"
+  },
+  "experience": {
+    "title": "Erfahrung"
+  },
+  "blog": {
+    "title": "Blog",
+    "readMore": "Mehr lesen",
+    "noPosts": "Noch keine Beiträge."
+  },
+  "contact": {
+    "title": "Kontakt",
+    "description": "Interessiert an einer Zusammenarbeit? Senden Sie mir eine Nachricht und ich werde so schnell wie möglich antworten.",
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "send": "Nachricht Senden",
+    "sending": "Senden...",
+    "success": "Nachricht gesendet!",
+    "successMessage": "Danke für Ihre Nachricht. Ich werde Ihnen bald antworten."
+  },
+  "footer": {
+    "connect": "Verbinden"
+  }
+}
