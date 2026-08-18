@@ -17,7 +17,10 @@
     "title": "Projets",
     "featured": "En vedette",
     "code": "Code",
-    "live": "En direct"
+    "live": "En direct",
+    "seeMore": "Voir plus de projets",
+    "pageTitle": "Tous les projets",
+    "pageDescription": "Une sélection de ce que j'ai construit et que je maintiens."
   },
   "experience": {
     "title": "Expérience"

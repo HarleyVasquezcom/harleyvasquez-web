@@ -1,3 +1,5 @@
+import type { Locale } from "@/i18n/routing";
+
 export const SITE = {
   name:         "Harley Vásquez",
   role:         "Software Engineer",
@@ -29,12 +31,38 @@ export const STACK = [
   { name: "Terraform",  color: "#7B42BC" },
 ];
 
-export const PROJECTS = [
+export type Project = {
+  slug:        string;
+  title:       string;
+  description: Record<Locale, string>;
+  category:    Record<Locale, string>;
+  tags:        string[];
+  image:       string;
+  href:        string;
+  live:        string | null;
+  featured:    boolean;
+};
+
+export const PROJECTS: Project[] = [
   {
     slug:        "flux-platform",
     title:       "Flux Platform",
-    description: "SaaS observability platform for microservices. Processes 50M events/day with p99 latency < 10ms.",
-    category:    "SaaS",
+    description: {
+      en: "SaaS observability platform for microservices. Processes 50M events/day with p99 latency < 10ms.",
+      es: "Plataforma SaaS de observabilidad para microservicios. Procesa 50M de eventos/día con latencia p99 < 10ms.",
+      fr: "Plateforme SaaS d'observabilité pour microservices. Traite 50M d'événements/jour avec une latence p99 < 10ms.",
+      de: "SaaS-Observability-Plattform für Microservices. Verarbeitet 50M Ereignisse/Tag mit p99-Latenz < 10ms.",
+      pt: "Plataforma SaaS de observabilidade para microsserviços. Processa 50M de eventos/dia com latência p99 < 10ms.",
+      it: "Piattaforma SaaS di osservabilità per microservizi. Elabora 50M di eventi/giorno con latenza p99 < 10ms.",
+    },
+    category: {
+      en: "SaaS",
+      es: "SaaS",
+      fr: "SaaS",
+      de: "SaaS",
+      pt: "SaaS",
+      it: "SaaS",
+    },
     tags:        ["Go", "Kafka", "ClickHouse", "Next.js"],
     image:       "/projects/flux.png",
     href:        "https://github.com/harleyvasquez/flux",
@@ -44,8 +72,22 @@ export const PROJECTS = [
   {
     slug:        "arc-cli",
     title:       "Arc CLI",
-    description: "Terminal tool for infrastructure-as-code management. 2k+ GitHub stars.",
-    category:    "Open Source",
+    description: {
+      en: "Terminal tool for infrastructure-as-code management. 2k+ GitHub stars.",
+      es: "Herramienta de terminal para gestión de infraestructura como código. +2k estrellas en GitHub.",
+      fr: "Outil en ligne de commande pour la gestion d'infrastructure as code. +2k étoiles GitHub.",
+      de: "Terminal-Tool für Infrastructure-as-Code-Verwaltung. +2k GitHub-Sterne.",
+      pt: "Ferramenta de terminal para gerenciamento de infraestrutura como código. +2k estrelas no GitHub.",
+      it: "Strumento da terminale per la gestione di infrastructure as code. +2k stelle su GitHub.",
+    },
+    category: {
+      en: "Open Source",
+      es: "Código abierto",
+      fr: "Open Source",
+      de: "Open Source",
+      pt: "Código aberto",
+      it: "Open Source",
+    },
     tags:        ["Rust", "Terraform", "CLI"],
     image:       "/projects/arc.png",
     href:        "https://github.com/harleyvasquez/arc",
@@ -55,8 +97,22 @@ export const PROJECTS = [
   {
     slug:        "databridge",
     title:       "DataBridge",
-    description: "ETL framework with support for 30+ connectors. Used in production by 15 companies.",
-    category:    "Open Source",
+    description: {
+      en: "ETL framework with support for 30+ connectors. Used in production by 15 companies.",
+      es: "Framework ETL con soporte para más de 30 conectores. Usado en producción por 15 empresas.",
+      fr: "Framework ETL prenant en charge plus de 30 connecteurs. Utilisé en production par 15 entreprises.",
+      de: "ETL-Framework mit Unterstützung für über 30 Konnektoren. Wird in Produktion von 15 Unternehmen eingesetzt.",
+      pt: "Framework ETL com suporte a mais de 30 conectores. Usado em produção por 15 empresas.",
+      it: "Framework ETL con supporto per oltre 30 connettori. Usato in produzione da 15 aziende.",
+    },
+    category: {
+      en: "Open Source",
+      es: "Código abierto",
+      fr: "Open Source",
+      de: "Open Source",
+      pt: "Código aberto",
+      it: "Open Source",
+    },
     tags:        ["Python", "PostgreSQL", "Redis"],
     image:       "/projects/databridge.png",
     href:        "https://github.com/harleyvasquez/databridge",
@@ -64,6 +120,14 @@ export const PROJECTS = [
     featured:    false,
   },
 ];
+
+export function localizeProject(project: Project, locale: Locale) {
+  return {
+    ...project,
+    description: project.description[locale],
+    category:    project.category[locale],
+  };
+}
 
 export const EXPERIENCE = [
   {

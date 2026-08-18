@@ -17,7 +17,10 @@
     "title": "Projects",
     "featured": "Featured",
     "code": "Code",
-    "live": "Live"
+    "live": "Live",
+    "seeMore": "See More Projects",
+    "pageTitle": "All Projects",
+    "pageDescription": "A selection of things I've built and maintain."
   },
   "experience": {
     "title": "Experience"

@@ -17,7 +17,10 @@
     "title": "Projetos",
     "featured": "Destaque",
     "code": "Código",
-    "live": "Ao vivo"
+    "live": "Ao vivo",
+    "seeMore": "Ver mais projetos",
+    "pageTitle": "Todos os projetos",
+    "pageDescription": "Uma seleção do que construí e mantenho."
   },
   "experience": {
     "title": "Experiência"
