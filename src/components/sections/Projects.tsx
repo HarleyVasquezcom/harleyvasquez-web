@@ -1,3 +1,4 @@
+"use client";
 import { PROJECTS } from "@/lib/data";
 import { trackProjectClick } from "@/lib/analytics";
 import Image from "next/image";
